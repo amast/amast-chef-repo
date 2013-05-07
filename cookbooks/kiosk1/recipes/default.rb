@@ -73,7 +73,7 @@ end
 
 execute 'password change' do
   command = 'passwd kiosk'
-  status = popen4(command, :waitlast => true) do |pid, stdin, stdout, stderr|
+  status = (command, :waitlast => true) do |pid, stdin, stdout, stderr|
     stdin.puts "#{@new_resource.password}"
   end
 end
