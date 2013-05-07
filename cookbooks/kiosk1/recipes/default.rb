@@ -62,3 +62,18 @@ execute 'google-chrome' do
   command 'dpkg -i /usr/local/src/google-chrome-stable_current_amd64.deb'
 end
 
+execute 'default browser' do
+  command 'update-alternatives --install /usr/bin/x-www-browser \x-www-browser /usr/bin/google-chrome'
+end
+
+user 'kiosk' do
+  home '/home/kiosk'
+  shell '/bin/bash'
+end
+
+execute 'password change' do
+  command = 'passwd kiosk'
+  status = popen4(command, :waitlast => true) do |pid, stdin, stdout, stderr|
+    stdin.puts "#{@new_resource.password}"
+  end
+end
