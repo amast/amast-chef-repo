@@ -63,7 +63,7 @@ execute 'google-chrome' do
 end
 
 execute 'default browser' do
-  command 'update-alternatives --install /usr/bin/x-www-browser \x-www-browser /usr/bin/google-chrome'
+  command 'update-alternatives --install /usr/bin/x-www-browser \x-www-browser /usr/bin/google-chrome 150'
 end
 
 user 'kiosk' do
