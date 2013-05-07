@@ -71,6 +71,4 @@ user 'kiosk' do
   shell '/bin/bash'
 end
 
-execute 'password' do
-  command 'passwd kiosk'
-end
+
