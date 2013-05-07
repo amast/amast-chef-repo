@@ -26,13 +26,15 @@ package 'build-essential' do
   action  :install
 end
 
-apt_repository "chrome"   do
-  uri "http://dl.google.com/linux/chrome/deb/"
-  distribution "stable"
-  components ["main"]
-  key "https://dl-ssl.google.com/linux/linux_signing_key.pub"
-  action :add
+remote_file '/usr/local/src/google-chrome-stable_current_amd64.deb' do
+  source 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+  owner 'root'
+  group 'root'
+  mode '0755'
 end
 
-package "google-chrome-" + node['google-chrome']['track']
+dpkg_package "google-chrome" do
+  source '/usr/local/src/google-chrome-stable_current_amd64.deb'
+  action :install
+end
 
