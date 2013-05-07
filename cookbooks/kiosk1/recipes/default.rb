@@ -26,6 +26,31 @@ package 'build-essential' do
   action  :install
 end
 
+#chrome dependencies
+package 'libasound2' do
+  action :install
+end
+
+package 'libgconf2-4' do
+  action :install
+end
+
+package 'libnspr4' do
+  action :install
+end
+
+package 'libnss3-1d' do
+  action :install
+end
+
+package 'libxss1' do
+  action :install
+end
+
+package 'xdg-utils' do
+  action :install
+end
+
 remote_file '/usr/local/src/google-chrome-stable_current_amd64.deb' do
   source 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
   owner 'root'
