@@ -71,9 +71,6 @@ user 'kiosk' do
   shell '/bin/bash'
 end
 
-execute 'password change' do
-  command = 'passwd kiosk'
-  status = (command, :waitlast => true) do |pid, stdin, stdout, stderr|
-    stdin.puts "#{@new_resource.password}"
-  end
+execute 'password' do
+  command 'passwd kiosk'
 end
