@@ -33,8 +33,7 @@ remote_file '/usr/local/src/google-chrome-stable_current_amd64.deb' do
   mode '0755'
 end
 
-dpkg_package 'google-chrome' do
-  source '/usr/local/src/google-chrome-stable_current_amd64.deb'
-  action :install
+execute 'google-chrome' do
+  command 'dpkg -i /usr/local/src/google-chrome-stable_current_amd64.deb'
 end
 
