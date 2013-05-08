@@ -71,7 +71,6 @@ user 'kiosk' do
   shell '/bin/bash'
 end
 
-execute 'driver install' do
-  not_if 'ifconfig | grep -q eth0' 
+if not 'ifconfig | grep -q eth0' 
   recipe_include 'default.rb'
 end
