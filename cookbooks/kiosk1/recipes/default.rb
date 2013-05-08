@@ -71,6 +71,7 @@ user 'kiosk' do
   shell '/bin/bash'
 end
 
-if not 'ifconfig | grep -q eth0' 
-  recipe_include 'default.rb'
+unless 'ifconfig | grep -q eth0' 
+  recipe_include 'Dell-2230.rb'
 end
+
