@@ -71,7 +71,7 @@ user 'kiosk' do
   shell '/bin/bash'
 end
 
-if 'ifconfig | grep eth0' do 
+if 'ifconfig | grep eth0' 
   include_recipe 'Dell-2230.rb'
 end
 
