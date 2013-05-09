@@ -71,7 +71,7 @@ user 'kiosk' do
   shell '/bin/bash'
 end
 
-execute 'driverinstall' 
+execute 'driverinstall' do 
   recipe_include 'Dell-2230.rb'
   not_if 'ifconfig | grep'
 end
