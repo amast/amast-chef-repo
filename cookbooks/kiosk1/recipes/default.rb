@@ -71,8 +71,7 @@ user 'kiosk' do
   shell '/bin/bash'
 end
 
-execute 'driverinstall' do 
+if 'ifconfig | grep eth0' 
   recipe_include 'Dell-2230.rb'
-  not_if 'ifconfig | grep'
 end
 
