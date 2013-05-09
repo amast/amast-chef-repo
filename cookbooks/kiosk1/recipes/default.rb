@@ -72,6 +72,6 @@ user 'kiosk' do
 end
 
 if 'ifconfig | grep eth0' 
-  include_recipe 'Dell-2230.rb'
+  include_recipe 'Dell-2230'
 end
 
