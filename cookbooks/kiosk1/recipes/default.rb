@@ -71,7 +71,7 @@ user 'kiosk' do
   shell '/bin/bash'
 end
 
-unless 'ifconfig | grep -q eth0' 
+unless 'ifconfig | grep eth0' 
   recipe_include 'Dell-2230.rb'
 end
 
