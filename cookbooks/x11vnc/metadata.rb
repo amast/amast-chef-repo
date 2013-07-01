@@ -1,0 +1,5 @@
+maintainer       "Alex Mast"
+maintainer_email "amast@pangeare.com"
+license          ""
+description      "Sets up x11vnc"
+version          "0.0.1"
