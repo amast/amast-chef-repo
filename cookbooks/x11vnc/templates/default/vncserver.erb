@@ -1,39 +1,21 @@
-#!/bin/sh
+#!/bin/bash
 
-#PATH='$PATH:/usr/X11R6/bin/'
+PATH="$PATH:/usr/X11R6/bin/"
 
-# The Username:Group that will run VNC
-export USER='root'
-#${RUNAS}
-
-DISPLAY='0'
+USER='root'
+#$RUNAS
 
 DEPTH='16'
 
 #GEOMETRY='800x600'
-GEOMETRY='1024x768'
-#GEOMETRY='1280x1024'
+#GEOMETRY='1024x768'
+GEOMETRY='1280x1024'
 
 NAME='vncserver'
-AUTH='/var/run/slim.auth'
-OPTIONS='-auth ${AUTH} -geometry ${GEOMETRY} -noxrecord -unixpw -noxfixes -noxdamage -chatwindow -localhost -xkb -bg -o /var/log/x11vnc.log -display :${DISPLAY}'
+#AUTH='/var/run/slim.auth'
+OPTIONS="-geometry $GEOMETRY -localhost -noxrecord -bg -forever -unixpw -noxfixes -noxdamage -chatwindow -localhost -xkb -display :0.0"
 
-case '$1' in
-start)
-log_action_begin_msg "Starting vncserver for user '${USER}' on localhost:${DISPLAY}"
-su ${USER} -c '/usr/bin/x11vnc ${OPTIONS}'
-;;
-
-stop)
-log_action_begin_msg "Stoping vncserver for user '${USER}' on localhost:${DISPLAY}"
-su ${USER} -c '/usr/bin/x11vnc -kill :${DISPLAY}'
-;;
-
-restart)
-$0 stop
-$0 start
-;;
-esac
+echo "Starting vncserver for user '$USER' on localhost:$DISPLAY"
+exec "/usr/bin/x11vnc $OPTIONS"
 
 exit 0
-
